@@ -25,6 +25,8 @@ function displayQuote(quote) {
 
 function getRandomQuote() {
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  let randomPic = Math.floor(Math.random() * 100);
+  $("#wrapper").css("background-image", 'linear-gradient(115deg, rgb(0 186 255 / 42%), rgb(67 145 56 / 70%)) ,url(https://source.unsplash.com/random/1920x1280random?sig=' + randomPic + ')');
   displayQuote(randomQuote);
   tweetQuote(randomQuote);
 }
@@ -42,11 +44,11 @@ function enableButtons() {
 }
 
 $(function () {
-  fetch(URL).
-  then(status).
-  then(json).
-  then(setQuotes).
-  then(getRandomQuote).
-  then(enableButtons);
+  fetch(URL)
+    .then(status)
+    .then(json)
+    .then(setQuotes)
+    .then(getRandomQuote)
+    .then(enableButtons);
   $('#new-quote').on('click', getRandomQuote);
 });
